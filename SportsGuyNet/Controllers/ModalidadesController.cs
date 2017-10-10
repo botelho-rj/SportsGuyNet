@@ -14,12 +14,15 @@ namespace SportsGuyNet.Controllers
     {
         EFContext contexto = new EFContext();
 
+        #region INDEX
         // GET: Modalidades
         public ActionResult Index()
         {
             return View(contexto.Modalidades.OrderBy(c => c.Nome));
         }
+        #endregion
 
+        #region CREATE
         // GET: Modalidades/Create
         public ActionResult Create()
         {
@@ -41,7 +44,9 @@ namespace SportsGuyNet.Controllers
                 return View(modalidade);
             }
         }
+        #endregion
 
+        #region EDIT
         // GET: Modalidades/Edit/5
         public ActionResult Edit(int? id)
         {
@@ -71,7 +76,9 @@ namespace SportsGuyNet.Controllers
                 return View();
             }
         }
+        #endregion
 
+        #region DELETE
         // GET: Modalidades/Delete/5
         public ActionResult Delete(int? id)
         {
@@ -101,6 +108,7 @@ namespace SportsGuyNet.Controllers
             {
                 return View();
             }
-        }
+        } 
+        #endregion
     }
 }
