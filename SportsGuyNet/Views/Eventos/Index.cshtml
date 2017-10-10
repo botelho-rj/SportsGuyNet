@@ -1,0 +1,77 @@
+﻿@model IEnumerable<SportsGuyNet.Models.Evento>
+
+@{
+    Layout = "~/Views/Shared/_Layout.cshtml";
+    ViewBag.Title = "Listagem de Eventos";
+}
+
+@if (@TempData["Message"] != null){	
+    <div class="alert alert-success" role="alert">			
+        @TempData["Message"]	
+    </div>
+}
+<div class="panel	panel-primary">
+    <div class="panel-heading">
+        Relação	de Eventos registrados
+    </div>
+    <div class="panel-body">
+        <table class="table	table-striped	table-hover">
+            <thead>
+                <tr>
+                    <th>                       
+                        @Html.DisplayNameFor(model => model.Modalidade.Nome)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.Titulo)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.Data)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.Horario)
+                    </th>
+                    <th></th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var item in Model)
+                {
+                    <tr>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.Modalidade.Nome)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.Titulo)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.Data)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.Horario)
+                        </td>
+                        <td>
+                            @Html.ActionLink("Editar", "Edit", new { id = item.EventoId }) |
+                            @Html.ActionLink("Detalhes", "Details", new { id = item.EventoId }) |
+                            @Html.ActionLink("Deletar", "Delete", new { id = item.EventoId })
+                        </td>
+                    </tr>
+                    }
+            </tbody>
+        </table>
+    </div>
+
+    <div class="panel-footer	panel-info">
+        @Html.ActionLink("Registrar	um	novo Evento", "Create", null, new { @class = "btn	btn-success" })
+    </div> 
+</div>
+
+@section styles{
+    <link href="@Url.Content("~/content/DataTables/css/dataTables.bootstra.css")" 
+          rel="stylesheet" /> 
+    }
+@section ScriptPage	{
+    <script src="@Url.Content("~/scripts/DataTables/jquery.dataTables.js")"></script>
+    <script src="@Url.Content("~/scripts/DataTables/dataTables.bootstrap.js")"></script>
+    <script type="text/javascript">	$(document).ready(function () { $('.table').dataTable();});
+    </script> 
+} 
