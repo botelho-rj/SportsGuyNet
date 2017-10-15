@@ -4,7 +4,10 @@
     Layout = "~/Views/Shared/_Layout.cshtml";
     ViewBag.Title = "Listagem de Eventos";
 }
-
+<br/>
+<br />
+<br />
+<br />
 @if (@TempData["Message"] != null){	
     <div class="alert alert-success" role="alert">			
         @TempData["Message"]	
@@ -30,7 +33,6 @@
                     <th>
                         @Html.DisplayNameFor(model => model.Horario)
                     </th>
-                    <th></th>
                 </tr>
             </thead>
             <tbody>
@@ -51,7 +53,7 @@
                         </td>
                         <td>
                             @Html.ActionLink("Editar", "Edit", new { id = item.EventoId }) |
-                            @Html.ActionLink("Detalhes", "Details", new { id = item.EventoId }) |
+                            @Html.ActionLink("Interesse", "Reserve", new { id = item.EventoId }) |
                             @Html.ActionLink("Deletar", "Delete", new { id = item.EventoId })
                         </td>
                     </tr>
@@ -62,14 +64,15 @@
 
     <div class="panel-footer	panel-info">
         @Html.ActionLink("Registrar	um	novo Evento", "Create", null, new { @class = "btn	btn-success" })
-    </div> 
+    </div>
 </div>
 
 @section styles{
     <link href="@Url.Content("~/content/DataTables/css/dataTables.bootstra.css")" 
           rel="stylesheet" /> 
     }
-@section ScriptPage	{
+
+    @section ScriptPage {
     <script src="@Url.Content("~/scripts/DataTables/jquery.dataTables.js")"></script>
     <script src="@Url.Content("~/scripts/DataTables/dataTables.bootstrap.js")"></script>
     <script type="text/javascript">	$(document).ready(function () { $('.table').dataTable();});

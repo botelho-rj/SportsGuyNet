@@ -405,7 +405,7 @@
     <Content Include="Scripts\jquery.validate.unobtrusive.min.js" />
     <Content Include="Web.config" />
     <Content Include="Views\Eventos\Create.cshtml" />
-    <Content Include="Views\Eventos\Details.cshtml" />
+    <Content Include="Views\Eventos\Reserve.cshtml" />
     <Content Include="Views\Eventos\Edit.cshtml" />
     <Content Include="Views\Eventos\Delete.cshtml" />
   </ItemGroup>
@@ -414,11 +414,16 @@
     <Compile Include="Context\EFContext.cs" />
     <Compile Include="Controllers\EventosController.cs" />
     <Compile Include="Controllers\ModalidadesController.cs" />
+    <Compile Include="Controllers\AutenticacoesController.cs" />
+    <Compile Include="Controllers\PreferenciasController.cs" />
+    <Compile Include="Controllers\UsuariosController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
     <Compile Include="Models\Evento.cs" />
     <Compile Include="Models\Modalidade.cs" />
+    <Compile Include="Models\Preferencia.cs" />
+    <Compile Include="Models\Autenticacao.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -435,6 +440,10 @@
     <Content Include="Views\Modalidades\Create.cshtml" />
     <Content Include="Views\Modalidades\Edit.cshtml" />
     <Content Include="Views\Modalidades\Delete.cshtml" />
+    <Content Include="Views\Autenticacoes\Registrar.cshtml" />
+    <Content Include="Views\Autenticacoes\Login.cshtml" />
+    <Content Include="Views\Preferencias\Index.cshtml" />
+    <Content Include="Views\Preferencias\Delete.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
@@ -442,7 +451,9 @@
       <DependentUpon>Web.config</DependentUpon>
     </None>
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <Folder Include="Views\Usuarios\" />
+  </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
     <VSToolsPath Condition="'$(VSToolsPath)' == ''">$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)</VSToolsPath>

@@ -1,5 +1,6 @@
 ﻿using SportsGuyNet.Context;
 using SportsGuyNet.Models;
+using System;
 using System.Data.Entity;
 using System.Linq;
 using System.Net;
@@ -40,21 +41,61 @@ namespace SportsGuyNet.Controllers
         }
         #endregion
 
-        #region DETAILS
-        //GET: DETAILS
-        public ActionResult Details(int? id)
+
+        #region RESERVE
+        //GET: RESERVE
+        public ActionResult Reserve(int? id)
         {
-            if (id == null)           
+            if (id == null)
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
 
             var evento = contexto.Eventos.Where(c => c.EventoId == id).Include(c => c.Modalidade).First();
 
             if (evento == null)
                 return HttpNotFound();
- 
+
+            return View(evento);
+        }
+
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public ActionResult Reserve(Evento evento)
+        {
+            if (ModelState.IsValid)
+            {
+                Preferencia preferencia = new Preferencia();
+                preferencia.AutenticacaoId = Convert.ToInt32(Session["UsuarioId"]);
+                preferencia.EventoId = evento.EventoId;
+                contexto.Preferencias.Add(preferencia);
+                contexto.SaveChanges();
+
+                return RedirectToAction("Index");
+            }
+
             return View(evento);
         }
         #endregion
+
+
+
+/*
+        #region DETAILS
+        //GET: DETAILS
+        public ActionResult Details(int? id)
+        {
+            if (id == null)
+                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+
+            var evento = contexto.Eventos.Where(c => c.EventoId == id).Include(c => c.Modalidade).First();
+
+            if (evento == null)
+                return HttpNotFound();
+
+            return View(evento);
+        }
+        #endregion
+*/
+
 
         #region EDIT
         //GET: EDIT

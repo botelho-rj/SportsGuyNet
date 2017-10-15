@@ -4,7 +4,10 @@
     Layout = "~/Views/Shared/_Layout.cshtml";
     ViewBag.Title = "Remoção de um Evento";
 }
-
+<br />
+<br />
+<br />
+<br />
 @using (Html.BeginForm())
 {
     @Html.AntiForgeryToken()
@@ -50,16 +53,45 @@
                 </div>
             </div>
         </div>
-        <div class="panel-footer panel-info">
-            <div class="col-md-offset-2 col-md-10">
-                <input type="submit" value="Remover Evento" class="btn btn-default" />
-                @Html.ActionLink("Voltar à Lista", "Index", null, new { @class = "btn btn-warning" })
+        <div class="panel-footer	panel-info">
+            <a href="#" class="btn	btn-info" data-toggle="modal" data-target="#deleteConfirmationModal">
+                Remover
+            </a>
+            @Html.ActionLink("Retornar para a listagem", "Index", null, new { @class = "btn	btn-info" })
+        </div>
+        <br />
+        <br />
+    </div>
+}   <div class="modal	fade" id="deleteConfirmationModal" tabindex="-1" role="dialog" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-ELTEismiss="modal" aria-hidden="true">
+                    &times;
+                </button>
+                <h4 class="modal-title">Confirmação	de	exclusão de Evento</h4>
             </div>
-            <br />
-            <br />
+            <div class="modal-body">
+                <p>	Você	está	prestes	a	remover	o Evento @Model.Titulo.ToUpper().</p>
+                <p><strong>Deseja	prosseguir?</strong></p>
+                @using (Html.BeginForm("Delete", "Eventos", FormMethod.Post, new { @id = "delete-form", role = "form" }))
+                {
+                    @Html.HiddenFor(m => m.EventoId)
+                    @Html.AntiForgeryToken()
+                }
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn	btn-default" onclick="$('#delete-form').submit();">
+                    Excluir
+                </button>
+                <button type="button" class="btn	btn-primary" data-dismiss="modal">
+                    Cancelar
+                </button>
+            </div>
         </div>
     </div>
-}
+</div>
+
 @section ScriptPage	{
     <script src="@Url.Content("~/scripts/jquery.validate.min.js")"></script>
     <script src="@Url.Content("~/scripts/jquery.validate.unobtrusive.min.js")"></script>
