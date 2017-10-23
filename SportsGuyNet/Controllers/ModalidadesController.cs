@@ -1,24 +1,40 @@
-﻿using SportsGuyNet.Context;
-using SportsGuyNet.Models;
-using System;
-using System.Collections.Generic;
+﻿using Servico.Tabelas;
+using SportsGuyNet.Context;
+using SportsGuyNet.Modelo.Tabelas.Models;
 using System.Data.Entity;
 using System.Linq;
 using System.Net;
-using System.Web;
 using System.Web.Mvc;
 
 namespace SportsGuyNet.Controllers
 {
     public class ModalidadesController : Controller
     {
-        EFContext contexto = new EFContext();
+        private ModalidadeServico modalidadeServico = new ModalidadeServico();
+
+        private ActionResult GravarModalidade(Modalidade modalidade)
+        {
+            try
+            {
+                if (ModelState.IsValid)
+                {
+                    modalidadeServico.GravarModalidade(modalidade);
+                    return RedirectToAction("Index");
+                }
+                return View(modalidade);
+            }
+            catch
+            {
+                return View(modalidade);
+            }
+        }
+
 
         #region INDEX
         // GET: Modalidades
         public ActionResult Index()
         {
-            return View(contexto.Modalidades.OrderBy(c => c.Nome));
+            return View(modalidadeServico.ObterModalidadesClassificadasPorNome());
         }
         #endregion
 
@@ -32,17 +48,8 @@ namespace SportsGuyNet.Controllers
         // POST: Modalidades/Create
         [HttpPost]
         public ActionResult Create(Modalidade modalidade)
-        {
-            try
-            {
-                contexto.Modalidades.Add(modalidade);
-                contexto.SaveChanges();
-                return RedirectToAction("Index");
-            }
-            catch
-            {
-                return View(modalidade);
-            }
+        {          
+            return GravarModalidade(modalidade);           
         }
         #endregion
 
@@ -53,7 +60,7 @@ namespace SportsGuyNet.Controllers
             if (id == null)
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
 
-            var modalidade = contexto.Modalidades.Find(id);
+            var modalidade = modalidadeServico.ObterModalidade((int)id);
 
             if (modalidade == null)
                 return HttpNotFound();
@@ -65,16 +72,7 @@ namespace SportsGuyNet.Controllers
         [HttpPost]
         public ActionResult Edit(Modalidade modalidade)
         {
-            try
-            {
-                contexto.Entry(modalidade).State = EntityState.Modified;
-                contexto.SaveChanges();
-                return RedirectToAction("Index");
-            }
-            catch
-            {
-                return View();
-            }
+            return GravarModalidade(modalidade);
         }
         #endregion
 
@@ -85,7 +83,7 @@ namespace SportsGuyNet.Controllers
             if (id == null)
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
 
-            var modalidade = contexto.Modalidades.Find(id);
+            var modalidade = modalidadeServico.ObterModalidade((int)id);
 
             if (modalidade == null)
                 return HttpNotFound();
@@ -99,9 +97,7 @@ namespace SportsGuyNet.Controllers
         {
             try
             {
-                var modalidade = contexto.Modalidades.Find(id);
-                contexto.Modalidades.Remove(modalidade);
-                contexto.SaveChanges();
+                Modalidade modalidade = modalidadeServico.EliminarModalidade(id);
                 return RedirectToAction("Index");
             }
             catch

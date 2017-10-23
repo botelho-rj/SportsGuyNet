@@ -1,4 +1,5 @@
-﻿using System.ComponentModel.DataAnnotations;
+﻿using SportsGuyNet.Modelo.Cadastros.Models;
+using System.ComponentModel.DataAnnotations;
 
 namespace SportsGuyNet.Models
 {

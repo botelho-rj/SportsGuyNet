@@ -1,7 +1,8 @@
-﻿using System.Collections.Generic;
+﻿using SportsGuyNet.Modelo.Cadastros.Models;
+using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 
-namespace SportsGuyNet.Models
+namespace SportsGuyNet.Modelo.Tabelas.Models
 {
     public class Modalidade
     {

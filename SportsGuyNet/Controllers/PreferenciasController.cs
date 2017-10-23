@@ -1,6 +1,4 @@
-﻿using SportsGuyNet.Context;
-using SportsGuyNet.Models;
-using System;
+﻿using System;
 using System.Data.Entity;
 using System.Linq;
 using System.Net;

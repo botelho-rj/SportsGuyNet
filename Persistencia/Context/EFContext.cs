@@ -1,11 +1,10 @@
-﻿using SportsGuyNet.Models;
-using System;
-using System.Collections.Generic;
+﻿using SportsGuyNet.Modelo.Cadastros.Models;
+using SportsGuyNet.Modelo.Tabelas.Models;
+using SportsGuyNet.Models;
 using System.Data.Entity;
-using System.Linq;
-using System.Web;
+using System.Data.Entity.ModelConfiguration.Conventions;
 
-namespace SportsGuyNet.Context
+namespace SportsGuyNet.Persistencia.Context
 {
     public class EFContext : DbContext
     {
@@ -17,6 +16,12 @@ namespace SportsGuyNet.Context
         public DbSet<Modalidade> Modalidades { get; set; }
         public DbSet<Autenticacao> Usuarios { get; set; }
         public DbSet<Preferencia> Preferencias { get; set; }
+
+        protected override void OnModelCreating(DbModelBuilder modelBuilder)
+        {
+            base.OnModelCreating(modelBuilder);
+            modelBuilder.Conventions.Remove<PluralizingTableNameConvention>();
+        }
 
     }
 }

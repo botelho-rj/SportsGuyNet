@@ -1,5 +1,6 @@
 ﻿using SportsGuyNet.Context;
 using SportsGuyNet.Models;
+using System.Data.Entity;
 using System.Linq;
 using System.Web.Mvc;
 
@@ -8,7 +9,7 @@ namespace SportsGuyNet.Controllers
     public class AutenticacoesController : Controller
     {
 
-        EFContext contexto = new EFContext();
+        DbContext contexto = new EFContext();
 
 
         public ActionResult Index()

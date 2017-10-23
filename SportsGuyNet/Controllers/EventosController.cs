@@ -1,4 +1,6 @@
-﻿using SportsGuyNet.Context;
+﻿using Servico.Cadastro;
+using Servico.Tabelas;
+using SportsGuyNet.Modelo.Cadastros.Models;
 using SportsGuyNet.Models;
 using System;
 using System.Data.Entity;
@@ -11,15 +13,45 @@ namespace SportsGuyNet.Controllers
     public class EventosController : Controller
     {
 
-        EFContext contexto = new EFContext();
+        private EventoServico eventoServico = new EventoServico();
+        private ModalidadeServico modalidadeServico = new ModalidadeServico();
+
+        private void PopularViewBag(Evento evento = null)
+        {
+            if (evento == null)
+            {
+                ViewBag.ModalidadeId = new SelectList(modalidadeServico.ObterModalidadesClassificadasPorNome(), "ModalidadeId", "Nome");
+            }
+            else
+            {
+                ViewBag.ModalidadeId = new SelectList(modalidadeServico.ObterModalidadesClassificadasPorNome(), "ModalidadeId", "Nome", evento.ModalidadeId);
+            }
+        }
+
+        private ActionResult GravarEvento(Evento evento)
+        {
+            try
+            {
+                if (ModelState.IsValid)
+                {
+                    eventoServico.GravarEvento(evento);
+                    return RedirectToAction("Index");
+                }
+                return View(evento);
+            }
+            catch
+            {
+                return View(evento);
+            }
+        }
+
 
         #region INDEX
 
         // GET: Eventos
         public ActionResult Index()
         {
-            var eventos = contexto.Eventos.Include(c => c.Modalidade).OrderBy(d => d.Data);
-            return View(eventos);
+            return View(eventoServico.ObterEventosClassificadosPorData());
         }
         #endregion
 
@@ -27,7 +59,7 @@ namespace SportsGuyNet.Controllers
         //GET: CREATE
         public ActionResult Create()
         {
-            ViewBag.ModalidadeId = new SelectList(contexto.Modalidades.OrderBy(c => c.Nome), "ModalidadeId", "Nome");      
+            PopularViewBag();      
             return View();
         }
 
@@ -35,8 +67,7 @@ namespace SportsGuyNet.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult Create(Evento evento)
         {
-            contexto.Eventos.Add(evento);
-            contexto.SaveChanges();
+            GravarEvento(evento);
             return RedirectToAction("Index");
         }
         #endregion
@@ -49,7 +80,7 @@ namespace SportsGuyNet.Controllers
             if (id == null)
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
 
-            var evento = contexto.Eventos.Where(c => c.EventoId == id).Include(c => c.Modalidade).First();
+            var evento = eventoServico.ObterEvento((int)id);
 
             if (evento == null)
                 return HttpNotFound();
@@ -104,12 +135,12 @@ namespace SportsGuyNet.Controllers
             if (id == null)
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
 
-            var evento = contexto.Eventos.Find(id);
+            var evento = eventoServico.ObterEvento((int)id);
 
             if (evento == null)
                 return HttpNotFound();
 
-            ViewBag.ModalidadeId = new SelectList(contexto.Modalidades.OrderBy(c => c.Nome), "ModalidadeId", "Nome", evento.ModalidadeId);
+            PopularViewBag(evento);       
 
             return View(evento);
         }
@@ -120,8 +151,7 @@ namespace SportsGuyNet.Controllers
         {
             if (ModelState.IsValid)
             {
-                contexto.Entry(evento).State = EntityState.Modified;
-                contexto.SaveChanges();
+                GravarEvento(evento);
                 return RedirectToAction("Index");
             }
             
@@ -136,7 +166,7 @@ namespace SportsGuyNet.Controllers
             if (id == null)
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
 
-            var evento = contexto.Eventos.Where(c => c.EventoId == id).Include(c => c.Modalidade).First();
+            var evento = eventoServico.ObterEvento((int)id);
 
             if (evento == null)
                 return HttpNotFound();
@@ -148,11 +178,17 @@ namespace SportsGuyNet.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult Delete(int id)
         {
-            var evento = contexto.Eventos.Find(id);
-            contexto.Eventos.Remove(evento);
-            contexto.SaveChanges();
-            TempData["Message"] = "O Evento " + evento.Titulo.ToUpper() + " foi removido.";
-            return RedirectToAction("Index");
+            try
+            {
+                var evento = eventoServico.RemoverEvento(id);
+                TempData["Message"] = "O Evento " + evento.Titulo.ToUpper() + " foi removido.";
+                return RedirectToAction("Index");
+            }
+            catch
+            {
+                return View();
+            }
+            
 
         } 
         #endregion

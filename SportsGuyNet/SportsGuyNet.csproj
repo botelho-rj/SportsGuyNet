@@ -411,7 +411,6 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="App_Start\RouteConfig.cs" />
-    <Compile Include="Context\EFContext.cs" />
     <Compile Include="Controllers\EventosController.cs" />
     <Compile Include="Controllers\ModalidadesController.cs" />
     <Compile Include="Controllers\AutenticacoesController.cs" />
@@ -420,10 +419,6 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
-    <Compile Include="Models\Evento.cs" />
-    <Compile Include="Models\Modalidade.cs" />
-    <Compile Include="Models\Preferencia.cs" />
-    <Compile Include="Models\Autenticacao.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -452,7 +447,18 @@
     </None>
   </ItemGroup>
   <ItemGroup>
+    <Folder Include="Models\" />
     <Folder Include="Views\Usuarios\" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Modelo\Modelo.csproj">
+      <Project>{f4bfce97-3bea-42a6-8656-af8ddc471eac}</Project>
+      <Name>Modelo</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Servico\Servico.csproj">
+      <Project>{d63058bb-5dcc-48e2-a6ad-3ad03636a450}</Project>
+      <Name>Servico</Name>
+    </ProjectReference>
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
