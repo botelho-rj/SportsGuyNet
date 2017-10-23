@@ -1,7 +1,7 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio 14
-VisualStudioVersion = 14.0.25420.1
+# Visual Studio 15
+VisualStudioVersion = 15.0.26730.12
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SportsGuyNet", "SportsGuyNet\SportsGuyNet.csproj", "{349BC394-8BC8-4030-A57D-3AABAAD4E8DA}"
 EndProject
@@ -10,6 +10,25 @@ EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Persistencia", "Persistencia\Persistencia.csproj", "{D1DC4A57-8FA6-411A-AAD9-4F984C74DFAA}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Servico", "Servico\Servico.csproj", "{D63058BB-5DCC-48E2-A6AD-3AD03636A450}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "NewFolder1", "NewFolder1", "{8D2FEAA2-F700-4703-A411-E3837D17F474}"
+	ProjectSection(SolutionItems) = preProject
+		SportsGuyNet\Controllers\AutenticacoesController.cs = SportsGuyNet\Controllers\AutenticacoesController.cs
+		Modelo\Tabelas\Preferencia.cs = Modelo\Tabelas\Preferencia.cs
+		SportsGuyNet\Controllers\PreferenciasController.cs = SportsGuyNet\Controllers\PreferenciasController.cs
+	EndProjectSection
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "autent", "autent", "{CEF51EF6-468A-4423-A119-159655E635D1}"
+	ProjectSection(SolutionItems) = preProject
+		SportsGuyNet\Views\Autenticacoes\Login.cshtml = SportsGuyNet\Views\Autenticacoes\Login.cshtml
+		SportsGuyNet\Views\Autenticacoes\Registrar.cshtml = SportsGuyNet\Views\Autenticacoes\Registrar.cshtml
+	EndProjectSection
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "pref", "pref", "{1560AD4B-DF4D-4507-B598-C26CD79E0508}"
+	ProjectSection(SolutionItems) = preProject
+		SportsGuyNet\Views\Preferencias\Delete.cshtml = SportsGuyNet\Views\Preferencias\Delete.cshtml
+		SportsGuyNet\Views\Preferencias\Index.cshtml = SportsGuyNet\Views\Preferencias\Index.cshtml
+	EndProjectSection
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -36,5 +55,12 @@ Global
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{CEF51EF6-468A-4423-A119-159655E635D1} = {8D2FEAA2-F700-4703-A411-E3837D17F474}
+		{1560AD4B-DF4D-4507-B598-C26CD79E0508} = {8D2FEAA2-F700-4703-A411-E3837D17F474}
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {56B00C6B-F486-473F-8E39-DCD6338D3F58}
 	EndGlobalSection
 EndGlobal

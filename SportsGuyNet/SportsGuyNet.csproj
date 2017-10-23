@@ -24,6 +24,7 @@
     <UseGlobalApplicationHostFile />
     <NuGetPackageImportStamp>
     </NuGetPackageImportStamp>
+    <Use64BitIISExpress />
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <DebugSymbols>true</DebugSymbols>
@@ -79,6 +80,15 @@
       <HintPath>..\packages\Microsoft.ApplicationInsights.2.4.0\lib\net45\Microsoft.ApplicationInsights.dll</HintPath>
       <Private>True</Private>
     </Reference>
+    <Reference Include="Microsoft.AspNet.Identity.Core, Version=2.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.AspNet.Identity.Core.2.2.1\lib\net45\Microsoft.AspNet.Identity.Core.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.AspNet.Identity.EntityFramework, Version=2.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.AspNet.Identity.EntityFramework.2.2.1\lib\net45\Microsoft.AspNet.Identity.EntityFramework.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.AspNet.Identity.Owin, Version=2.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.AspNet.Identity.Owin.2.2.1\lib\net45\Microsoft.AspNet.Identity.Owin.dll</HintPath>
+    </Reference>
     <Reference Include="Microsoft.AspNet.TelemetryCorrelation, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
       <HintPath>..\packages\Microsoft.AspNet.TelemetryCorrelation.1.0.0\lib\net45\Microsoft.AspNet.TelemetryCorrelation.dll</HintPath>
       <Private>True</Private>
@@ -88,6 +98,27 @@
       <Private>True</Private>
     </Reference>
     <Reference Include="Microsoft.CSharp" />
+    <Reference Include="Microsoft.Owin, Version=3.1.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.Owin.3.1.0\lib\net45\Microsoft.Owin.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Owin.Host.SystemWeb, Version=3.1.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.Owin.Host.SystemWeb.3.1.0\lib\net45\Microsoft.Owin.Host.SystemWeb.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Owin.Security, Version=2.1.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.Owin.Security.2.1.0\lib\net45\Microsoft.Owin.Security.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Owin.Security.Cookies, Version=2.1.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.Owin.Security.Cookies.2.1.0\lib\net45\Microsoft.Owin.Security.Cookies.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Owin.Security.OAuth, Version=2.1.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.Owin.Security.OAuth.2.1.0\lib\net45\Microsoft.Owin.Security.OAuth.dll</HintPath>
+    </Reference>
+    <Reference Include="Newtonsoft.Json, Version=4.5.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
+      <HintPath>..\packages\Newtonsoft.Json.4.5.11\lib\net40\Newtonsoft.Json.dll</HintPath>
+    </Reference>
+    <Reference Include="Owin, Version=1.0.0.0, Culture=neutral, PublicKeyToken=f0ebd12fd5e55cc5, processorArchitecture=MSIL">
+      <HintPath>..\packages\Owin.1.0\lib\net40\Owin.dll</HintPath>
+    </Reference>
     <Reference Include="System.Diagnostics.DiagnosticSource, Version=4.0.2.0, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
       <HintPath>..\packages\System.Diagnostics.DiagnosticSource.4.4.0\lib\net45\System.Diagnostics.DiagnosticSource.dll</HintPath>
       <Private>True</Private>
@@ -298,6 +329,7 @@
     <Content Include="Content\DataTables\images\sort_desc.png" />
     <Content Include="Content\DataTables\images\sort_desc_disabled.png" />
     <Content Include="Content\DataTables\swf\flashExport.swf" />
+    <Content Include="Content\Site.css" />
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Global.asax" />
     <Content Include="fonts\glyphicons-halflings-regular.woff2" />
@@ -311,6 +343,12 @@
     <Content Include="Content\DataTables\css\semanticui.scss" />
     <Content Include="Content\DataTables\css\mixins.scss" />
     <Content Include="Content\DataTables\css\common.scss" />
+    <Content Include="Areas\Cadastros\Views\web.config" />
+    <Content Include="Areas\Tabelas\Views\web.config" />
+    <Content Include="Areas\Seguranca\Views\web.config" />
+    <Content Include="Areas\Seguranca\Views\_ViewStart.cshtml" />
+    <Content Include="Areas\Seguranca\Views\Shared\_Layout.cshtml" />
+    <Content Include="Areas\Seguranca\Views\Admin\Index.cshtml" />
     <None Include="Scripts\jquery-1.10.2.intellisense.js" />
     <Content Include="Scripts\jquery-1.10.2.js" />
     <Content Include="Scripts\jquery-1.10.2.min.js" />
@@ -398,27 +436,53 @@
     <Content Include="Scripts\jquery-3.2.1.min.js" />
     <Content Include="Scripts\jquery-3.2.1.slim.js" />
     <Content Include="Scripts\jquery-3.2.1.slim.min.js" />
+    <Content Include="Scripts\datePicker-pt-BR.js" />
+    <Content Include="Scripts\jquery-ui-1.12.1.custom\package.json" />
     <None Include="Scripts\jquery.validate-vsdoc.js" />
+    <Content Include="Scripts\jquery-ui-1.12.1.custom\AUTHORS.txt" />
+    <Content Include="Scripts\jquery-ui-1.12.1.custom\external\jquery\jquery.js" />
+    <Content Include="Scripts\jquery-ui-1.12.1.custom\images\ui-icons_444444_256x240.png" />
+    <Content Include="Scripts\jquery-ui-1.12.1.custom\images\ui-icons_555555_256x240.png" />
+    <Content Include="Scripts\jquery-ui-1.12.1.custom\images\ui-icons_777620_256x240.png" />
+    <Content Include="Scripts\jquery-ui-1.12.1.custom\images\ui-icons_777777_256x240.png" />
+    <Content Include="Scripts\jquery-ui-1.12.1.custom\images\ui-icons_cc0000_256x240.png" />
+    <Content Include="Scripts\jquery-ui-1.12.1.custom\images\ui-icons_ffffff_256x240.png" />
+    <Content Include="Scripts\jquery-ui-1.12.1.custom\index.html" />
+    <Content Include="Scripts\jquery-ui-1.12.1.custom\jquery-ui.css" />
+    <Content Include="Scripts\jquery-ui-1.12.1.custom\jquery-ui.js" />
+    <Content Include="Scripts\jquery-ui-1.12.1.custom\jquery-ui.min.css" />
+    <Content Include="Scripts\jquery-ui-1.12.1.custom\jquery-ui.min.js" />
+    <Content Include="Scripts\jquery-ui-1.12.1.custom\jquery-ui.structure.css" />
+    <Content Include="Scripts\jquery-ui-1.12.1.custom\jquery-ui.structure.min.css" />
+    <Content Include="Scripts\jquery-ui-1.12.1.custom\jquery-ui.theme.css" />
+    <Content Include="Scripts\jquery-ui-1.12.1.custom\jquery-ui.theme.min.css" />
+    <Content Include="Scripts\jquery-ui-1.12.1.custom\LICENSE.txt" />
     <Content Include="Scripts\jquery.validate.js" />
     <Content Include="Scripts\jquery.validate.min.js" />
     <Content Include="Scripts\jquery.validate.unobtrusive.js" />
     <Content Include="Scripts\jquery.validate.unobtrusive.min.js" />
+    <Content Include="Scripts\modernizr-2.6.2.js" />
     <Content Include="Web.config" />
-    <Content Include="Views\Eventos\Create.cshtml" />
-    <Content Include="Views\Eventos\Reserve.cshtml" />
-    <Content Include="Views\Eventos\Edit.cshtml" />
-    <Content Include="Views\Eventos\Delete.cshtml" />
+    <Content Include="Areas\Cadastros\Views\Eventos\Create.cshtml" />
+    <Content Include="Areas\Cadastros\Views\Eventos\Reserve.cshtml" />
+    <Content Include="Areas\Cadastros\Views\Eventos\Edit.cshtml" />
+    <Content Include="Areas\Cadastros\Views\Eventos\Delete.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Compile Include="App_Start\RouteConfig.cs" />
-    <Compile Include="Controllers\EventosController.cs" />
-    <Compile Include="Controllers\ModalidadesController.cs" />
-    <Compile Include="Controllers\AutenticacoesController.cs" />
-    <Compile Include="Controllers\PreferenciasController.cs" />
-    <Compile Include="Controllers\UsuariosController.cs" />
+    <Compile Include="Areas\Cadastros\CadastrosAreaRegistration.cs" />
+    <Compile Include="Areas\Seguranca\Controllers\AdminController.cs" />
+    <Compile Include="Areas\Seguranca\Models\Usuario.cs" />
+    <Compile Include="Areas\Seguranca\SegurancaAreaRegistration.cs" />
+    <Compile Include="Areas\Tabelas\TabelasAreaRegistration.cs" />
+    <Compile Include="Areas\Cadastros\Controllers\EventosController.cs" />
+    <Compile Include="Areas\Tabelas\Controllers\ModalidadesController.cs" />
+    <Compile Include="DAL\IdentityDbContextAplicacao.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
+    <Compile Include="IdentityConfig.cs" />
+    <Compile Include="Infraestrutura\GerenciadorUsuario.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -427,18 +491,14 @@
     <Content Include="ApplicationInsights.config">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
-    <Content Include="Views\Eventos\Index.cshtml" />
+    <Content Include="Areas\Cadastros\Views\Eventos\Index.cshtml" />
     <Content Include="Views\Shared\_Layout.cshtml" />
     <Content Include="Scripts\jquery-3.2.1.slim.min.map" />
     <Content Include="Scripts\jquery-3.2.1.min.map" />
-    <Content Include="Views\Modalidades\Index.cshtml" />
-    <Content Include="Views\Modalidades\Create.cshtml" />
-    <Content Include="Views\Modalidades\Edit.cshtml" />
-    <Content Include="Views\Modalidades\Delete.cshtml" />
-    <Content Include="Views\Autenticacoes\Registrar.cshtml" />
-    <Content Include="Views\Autenticacoes\Login.cshtml" />
-    <Content Include="Views\Preferencias\Index.cshtml" />
-    <Content Include="Views\Preferencias\Delete.cshtml" />
+    <Content Include="Areas\Tabelas\Views\Modalidades\Index.cshtml" />
+    <Content Include="Areas\Tabelas\Views\Modalidades\Create.cshtml" />
+    <Content Include="Areas\Tabelas\Views\Modalidades\Edit.cshtml" />
+    <Content Include="Areas\Tabelas\Views\Modalidades\Delete.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
@@ -447,7 +507,10 @@
     </None>
   </ItemGroup>
   <ItemGroup>
-    <Folder Include="Models\" />
+    <Folder Include="Areas\Cadastros\Models\" />
+    <Folder Include="Areas\Cadastros\Views\Shared\" />
+    <Folder Include="Areas\Tabelas\Models\" />
+    <Folder Include="Areas\Tabelas\Views\Shared\" />
     <Folder Include="Views\Usuarios\" />
   </ItemGroup>
   <ItemGroup>

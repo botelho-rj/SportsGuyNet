@@ -1,4 +1,4 @@
-﻿using Persistencia.DAL.Tabelas;
+using Persistencia.DAL.Tabelas;
 using SportsGuyNet.Modelo.Tabelas.Models;
 using System.Linq;
 
@@ -8,7 +8,7 @@ namespace Servico.Tabelas
     {
         private ModalidadeDAL modalidadeDAL = new ModalidadeDAL();
 
-        public IQueryable<Modalidade> ObterModalidadesClassificadasPorNome()
+        public IQueryable ObterModalidadesClassificadasPorNome()
         {
             return modalidadeDAL.ObterModalidadesClassificadasPorNome();
         }

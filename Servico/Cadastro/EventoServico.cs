@@ -1,4 +1,4 @@
-﻿using Persistencia.DAL.Cadastros;
+using Persistencia.DAL.Cadastros;
 using SportsGuyNet.Modelo.Cadastros.Models;
 using System.Linq;
 
@@ -8,7 +8,7 @@ namespace Servico.Cadastro
     {
         private EventoDAL eventoDal = new EventoDAL();
 
-        public IQueryable<EventoDAL> ObterEventosClassificadosPorData()
+        public IQueryable ObterEventosClassificadosPorData()
         {
             return eventoDal.ObterEventosClassificadosPorData();
         }

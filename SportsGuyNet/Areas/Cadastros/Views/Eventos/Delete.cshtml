@@ -1,0 +1,98 @@
+@model SportsGuyNet.Modelo.Cadastros.Models.Evento
+
+@{
+    Layout = "~/Views/Shared/_Layout.cshtml";
+    ViewBag.Title = "Remoção de um Evento";
+}
+<br />
+<br />
+<br />
+<br />
+@using (Html.BeginForm())
+{
+    @Html.AntiForgeryToken()
+
+    <div class="panel	panel-primary">
+        <div class="panel-heading">
+            Remoção de Evento existente
+        </div>
+        <br />
+
+        <div class="form-horizontal">
+            @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+            @Html.HiddenFor(model => model.EventoId)
+            <div class="form-group">
+                @Html.LabelFor(model => model.Modalidade.Nome, htmlAttributes: new { @class = "control-label col-md-2" })
+                <div class="col-md-10">
+                    @Html.EditorFor(model => model.Modalidade.Nome, new { htmlAttributes = new { @class = "form-control" } })
+                    @Html.ValidationMessageFor(model => model.Modalidade.Nome, "", new { @class = "text-danger" })
+                </div>
+            </div>
+
+            <div class="form-group">
+                @Html.LabelFor(model => model.Titulo, htmlAttributes: new { @class = "control-label col-md-2" })
+                <div class="col-md-10">
+                    @Html.EditorFor(model => model.Titulo, new { htmlAttributes = new { @class = "form-control" } })
+                    @Html.ValidationMessageFor(model => model.Titulo, "", new { @class = "text-danger" })
+                </div>
+            </div>
+
+            <div class="form-group">
+                @Html.LabelFor(model => model.Data, htmlAttributes: new { @class = "control-label col-md-2" })
+                <div class="col-md-3">
+                    @Html.EditorFor(model => model.Data, new { htmlAttributes = new { @class = "form-control" } })
+                    @Html.ValidationMessageFor(model => model.Data, "", new { @class = "text-danger" })
+                </div>
+            </div>
+
+            <div class="form-group">
+                @Html.LabelFor(model => model.Horario, htmlAttributes: new { @class = "control-label col-md-2" })
+                <div class="col-md-3">
+                    @Html.EditorFor(model => model.Horario, new { htmlAttributes = new { @class = "form-control" } })
+                    @Html.ValidationMessageFor(model => model.Horario, "", new { @class = "text-danger" })
+                </div>
+            </div>
+        </div>
+        <div class="panel-footer	panel-info">
+            <a href="#" class="btn	btn-info" data-toggle="modal" data-target="#deleteConfirmationModal">
+                Remover
+            </a>
+            @Html.ActionLink("Retornar para a listagem", "Index", null, new { @class = "btn	btn-info" })
+        </div>
+        <br />
+        <br />
+    </div>
+}   <div class="modal	fade" id="deleteConfirmationModal" tabindex="-1" role="dialog" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-ELTEismiss="modal" aria-hidden="true">
+                    &times;
+                </button>
+                <h4 class="modal-title">Confirmação	de	exclusão de Evento</h4>
+            </div>
+            <div class="modal-body">
+                <p>	Você	está	prestes	a	remover	o Evento @Model.Titulo.ToUpper().</p>
+                <p><strong>Deseja	prosseguir?</strong></p>
+                @using (Html.BeginForm("Delete", "Eventos", FormMethod.Post, new { @id = "delete-form", role = "form" }))
+                {
+                    @Html.HiddenFor(m => m.EventoId)
+                    @Html.AntiForgeryToken()
+                }
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn	btn-default" onclick="$('#delete-form').submit();">
+                    Excluir
+                </button>
+                <button type="button" class="btn	btn-primary" data-dismiss="modal">
+                    Cancelar
+                </button>
+            </div>
+        </div>
+    </div>
+</div>
+
+@section ScriptPage	{
+    <script src="@Url.Content("~/scripts/jquery.validate.min.js")"></script>
+    <script src="@Url.Content("~/scripts/jquery.validate.unobtrusive.min.js")"></script>
+}

@@ -1,4 +1,4 @@
-﻿using SportsGuyNet.Modelo.Tabelas.Models;
+using SportsGuyNet.Modelo.Tabelas.Models;
 using SportsGuyNet.Persistencia.Context;
 using System.Data.Entity;
 using System.Linq;
@@ -9,7 +9,7 @@ namespace Persistencia.DAL.Tabelas
     {
         EFContext contexto = new EFContext();
 
-        public IQueryable<Modalidade> ObterModalidadesClassificadasPorNome()
+        public IQueryable ObterModalidadesClassificadasPorNome()
         {
             return contexto.Modalidades.OrderBy(b => b.Nome);
         }
@@ -20,15 +20,9 @@ namespace Persistencia.DAL.Tabelas
         }
 
         public void GravarModalidade(Modalidade modalidade)
-        {
-            if (modalidade.ModalidadeId == null)
-            {
-                contexto.Modalidades.Add(modalidade);
-            }
-            else
-            {
-                contexto.Entry(modalidade).State = EntityState.Modified;
-            }
+        {         
+            contexto.Modalidades.Add(modalidade);           
+            contexto.Entry(modalidade).State = EntityState.Modified;            
             contexto.SaveChanges();
         }
 
