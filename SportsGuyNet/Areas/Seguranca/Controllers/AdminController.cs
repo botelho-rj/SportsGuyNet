@@ -17,6 +17,7 @@ namespace SportsGuyNet.Areas.Seguranca.Controllers
             return View(GerenciadorUsuario.Users);
         }
 
+
         private GerenciadorUsuario GerenciadorUsuario
         {
             get
@@ -24,7 +25,6 @@ namespace SportsGuyNet.Areas.Seguranca.Controllers
                 return HttpContext.GetOwinContext().GetUserManager<GerenciadorUsuario>();
             }
         }
-
 
         #region CREATE
         [Authorize]
