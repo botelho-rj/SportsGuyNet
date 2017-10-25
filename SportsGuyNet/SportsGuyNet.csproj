@@ -358,6 +358,9 @@
     <Content Include="Areas\Seguranca\Views\Admin\Delete.cshtml" />
     <Content Include="Areas\Seguranca\Views\Home\Index.cshtml" />
     <Content Include="Areas\Seguranca\Views\Account\Login.cshtml" />
+    <Content Include="Areas\Seguranca\Views\PapelAdmin\Index.cshtml" />
+    <Content Include="Areas\Seguranca\Views\PapelAdmin\Create.cshtml" />
+    <Content Include="Areas\Seguranca\Views\PapelAdmin\Edit.cshtml" />
     <None Include="Scripts\jquery-1.10.2.intellisense.js" />
     <Content Include="Scripts\jquery-1.10.2.js" />
     <Content Include="Scripts\jquery-1.10.2.min.js" />
@@ -483,7 +486,10 @@
     <Compile Include="Areas\Seguranca\Controllers\AccountController.cs" />
     <Compile Include="Areas\Seguranca\Controllers\AdminController.cs" />
     <Compile Include="Areas\Seguranca\Controllers\HomeController.cs" />
+    <Compile Include="Areas\Seguranca\Controllers\PapelAdminController.cs" />
+    <Compile Include="Areas\Seguranca\Models\Papel.cs" />
     <Compile Include="Areas\Seguranca\Models\SegurancaViewModelos\LoginViewModel.cs" />
+    <Compile Include="Areas\Seguranca\Models\SegurancaViewModelos\PapelEditModel.cs" />
     <Compile Include="Areas\Seguranca\Models\SegurancaViewModelos\UsuarioViewModel.cs" />
     <Compile Include="Areas\Seguranca\Models\Usuario.cs" />
     <Compile Include="Areas\Seguranca\SegurancaAreaRegistration.cs" />
@@ -495,7 +501,9 @@
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
     <Compile Include="IdentityConfig.cs" />
+    <Compile Include="Infraestrutura\GerenciadorPapel.cs" />
     <Compile Include="Infraestrutura\GerenciadorUsuario.cs" />
+    <Compile Include="Infraestrutura\IdentityHelpers.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>

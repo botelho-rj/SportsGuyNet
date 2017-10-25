@@ -1,4 +1,4 @@
-﻿using Microsoft.AspNet.Identity;
+using Microsoft.AspNet.Identity;
 using Microsoft.AspNet.Identity.Owin;
 using Microsoft.Owin.Security;
 using SportsGuyNet.Areas.Seguranca.Models;
@@ -62,6 +62,13 @@ namespace SportsGuyNet.Areas.Seguranca.Controllers
                 <GerenciadorUsuario>();
             }
         }
-    
+
+    public ActionResult Logout()
+    {
+      AuthManager.SignOut();
+      return RedirectToAction("Index", "Home", new { area = "" });
     }
+
+
+  }
 }

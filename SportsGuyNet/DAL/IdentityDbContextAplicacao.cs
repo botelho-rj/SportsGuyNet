@@ -19,9 +19,11 @@ namespace SportsGuyNet.DAL
     }
 
         public System.Data.Entity.DbSet<SportsGuyNet.Areas.Seguranca.Models.SegurancaViewModelos.UsuarioViewModel> UsuarioViewModels { get; set; }
-    }
+
+    public System.Data.Entity.DbSet<SportsGuyNet.Areas.Seguranca.Models.Papel> IdentityRoles { get; set; }
+  }
 
 
-    public class IdentityDbInit : DropCreateDatabaseIfModelChanges<IdentityDbContextAplicacao> { }
+  public class IdentityDbInit : DropCreateDatabaseIfModelChanges<IdentityDbContextAplicacao> { }
 
 }

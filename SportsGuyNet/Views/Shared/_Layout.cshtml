@@ -1,43 +1,62 @@
-﻿<!DOCTYPE	html>
+@using SportsGuyNet.Infraestrutura
+<!DOCTYPE	html>
 <html>
 <head>
-    <meta name="viewport" content="width=device-width,initial-scale=1.0" charset="utf-8" />
-    <title>@ViewBag.Title</title>
-    <link href="@Url.Content("~/content/bootstrap.css")" rel="stylesheet" />
-    @RenderSection("styles", false)
+  <meta name="viewport" content="width=device-width,initial-scale=1.0" charset="utf-8" />
+  <title>@ViewBag.Title</title>
+  <link href="@Url.Content("~/content/bootstrap.css")" rel="stylesheet" />
+  @RenderSection("styles", false)
 </head>
 <body>
-    <div class="navbar navbar-inverse navbar-fixed-top">
-        <div class="container">
-            <div class="navbar-header">
-                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
-                </button>
-                @Html.ActionLink("SportsGuy", "Index", "Autenticacoes", new { area = "" }, new { @class = "navbar-brand" })
-            </div>
+  <div class="navbar navbar-inverse navbar-fixed-top">
+    <div class="container">
+      <div class="navbar-header">
+        <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+        </button>
+        @Html.ActionLink("SportsGuy", "Index", "Autenticacoes", new { area = "" }, new { @class = "navbar-brand" })
+      </div>
+      @{
+          if (Html.GetAuthenticatedUser().ToString() != "")
+          {
             <div class="navbar-collapse collapse">
-                <ul class="nav navbar-nav">
-                    <li id="liModali" role="presentation">@Html.ActionLink("Modalidades", "Index", "Modalidades")</li>
-                    <li id="liEventos" role="presentation">@Html.ActionLink("Eventos", "Index", "Eventos")</li>                  
-                    <li id="liPref" role="presentation">@Html.ActionLink("Eventos Preferidos", "Index", "Preferencias")</li>
-                </ul>
-                <ul class="nav navbar-nav navbar-right">
-                    <li id="RegistrarUsuario" role="presentation">@Html.ActionLink("Registrar", "Registrar", "Autenticacoes")</li>
-                    <li id="LoginUsuario" role="presentation">@Html.ActionLink("Login", "Login", "Autenticacoes")</li>
-                </ul>
+              <ul class="nav navbar-nav">
+                <li id="liModali" role="presentation">@Html.ActionLink("Modalidades", "Index", "Modalidades")</li>
+                <li id="liEventos" role="presentation">@Html.ActionLink("Eventos", "Index", "Eventos")</li>
+                <li id="liPref" role="presentation">@Html.ActionLink("Eventos Preferidos", "Index", "Preferencias")</li>
+              </ul>
             </div>
+          }
+       }
+
+              <br />
+              <ul style="text-align:right;">
+                @{
+
+                    if (Html.GetAuthenticatedUser().ToString() != "")
+                    {
+                      @Html.GetAuthenticatedUser();
+                      @Html.ActionLink("	-	Sair", "Logout", "Account");
+                    }
+                    else
+                    {
+                      @Html.ActionLink("Acessar", "Login", "Account", new { area = "Seguranca" }, null);
+                    }
+                }
+              </ul>
+            </div>
+          </div>
         </div>
-    </div>
-    <div class="container body-content">
-        @RenderBody()
-        <hr />
-        <footer>
+        <div class="container body-content">
+          @RenderBody()
+          <hr />
+          <footer>
             <p>&copy; @DateTime.Now.Year - My ASP.NET Application</p>
-        </footer>
-    </div>
-    <script src="@Url.Content("~/scripts/jquery-3.2.1.js")"></script>
-    <script src="@Url.Content("~/scripts/bootstrap.js")"></script>
-    @RenderSection("ScriptPage", false);
-</body>
-</html>
+          </footer>
+        </div>
+        <script src="@Url.Content("~/scripts/jquery-3.2.1.js")"></script>
+        <script src="@Url.Content("~/scripts/bootstrap.js")"></script>
+        @RenderSection("ScriptPage", false);
+      </body>
+    </html>

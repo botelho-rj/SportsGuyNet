@@ -11,7 +11,7 @@ namespace SportsGuyNet.Areas.Seguranca.Controllers
 {
     public class AdminController : Controller
     {
-        [Authorize]
+        //[Authorize(Roles="Administradores")]
         public ActionResult Index()
         {
             return View(GerenciadorUsuario.Users);
