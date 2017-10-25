@@ -1,17 +1,35 @@
-﻿
+@model string
 @{
-    Layout = null;
+    Layout = "~/Views/Shared/_Layout.cshtml";
+    ViewBag.Title = "Index Home";
 }
-
+<br />
+<br />
+<br />
+<br />
 <!DOCTYPE html>
 
 <html>
 <head>
     <meta name="viewport" content="width=device-width" />
-    <title>Index</title>
+    <title>Index - SportsGuy</title>
+    SportsGuy 1
 </head>
 <body>
-    <div> 
+  <h1>SportsGuy 2</h1>
+    <div>
+      <h1>SportsGuy 3</h1>
     </div>
 </body>
 </html>
+
+@section styles{
+  <link href="@Url.Content("~/content/DataTables/css/dataTables.bootstra.css")"
+        rel="stylesheet" />
+}
+
+@section ScriptPage {
+  <script src="@Url.Content("~/scripts/DataTables/jquery.dataTables.js")"></script>
+  <script src="@Url.Content("~/scripts/DataTables/dataTables.bootstrap.js")"></script>
+
+}

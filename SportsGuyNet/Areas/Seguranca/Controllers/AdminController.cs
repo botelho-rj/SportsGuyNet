@@ -27,13 +27,13 @@ namespace SportsGuyNet.Areas.Seguranca.Controllers
         }
 
         #region CREATE
-        [Authorize]
+
         public ActionResult Create()
         {
             return View();
         }
 
-        [Authorize]
+
         [HttpPost]
         public ActionResult Create(UsuarioViewModel model)
         {
@@ -55,7 +55,7 @@ namespace SportsGuyNet.Areas.Seguranca.Controllers
             return View(model);
         }
         #endregion
-        [Authorize]
+
         private void AddErrorsFromResult(IdentityResult result)
         {
             foreach (string error in result.Errors)
@@ -65,7 +65,7 @@ namespace SportsGuyNet.Areas.Seguranca.Controllers
         }
 
         #region EDIT
-        [Authorize]
+
         public ActionResult Edit(string id)
         {
             if (id == null)
@@ -86,7 +86,7 @@ namespace SportsGuyNet.Areas.Seguranca.Controllers
             uvm.Email = usuario.Email;
             return View(uvm);
         }
-        [Authorize]
+
         [HttpPost]
         public ActionResult Edit(UsuarioViewModel uvm)
         {
@@ -109,7 +109,7 @@ namespace SportsGuyNet.Areas.Seguranca.Controllers
         }
         #endregion
 
-        [Authorize]
+
         #region DELETE
         //	GET:	Fabricantes/Delete/5 
         public ActionResult Delete(string id)
@@ -129,7 +129,7 @@ namespace SportsGuyNet.Areas.Seguranca.Controllers
             return View(usuario);
         }
 
-        [Authorize]
+
         [HttpPost]
         public ActionResult Delete(Usuario usuario)
         {

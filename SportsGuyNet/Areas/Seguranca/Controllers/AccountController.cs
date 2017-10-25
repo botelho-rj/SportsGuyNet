@@ -12,6 +12,7 @@ namespace SportsGuyNet.Areas.Seguranca.Controllers
 {
     public class AccountController : Controller
     {
+
         public ActionResult Login(string returnUrl)
         {
             ViewBag.returnUrl = returnUrl;
@@ -38,14 +39,13 @@ namespace SportsGuyNet.Areas.Seguranca.Controllers
                     AuthManager.SignOut();
                     AuthManager.SignIn(new AuthenticationProperties{IsPersistent = false}, ident);
 
-                    if (returnUrl == null)
-                        returnUrl = "/Home";
-
-                    return Redirect(returnUrl);
+                    return RedirectToAction("Index", "../Cadastros/Eventos");
                 }
             }
             return View(details);
         }
+
+
         private IAuthenticationManager AuthManager
         {
             get
@@ -54,6 +54,8 @@ namespace SportsGuyNet.Areas.Seguranca.Controllers
                 Authentication;
             }
         }
+
+
         private GerenciadorUsuario UserManager
         {
             get
@@ -63,12 +65,13 @@ namespace SportsGuyNet.Areas.Seguranca.Controllers
             }
         }
 
-    public ActionResult Logout()
-    {
-      AuthManager.SignOut();
-      return RedirectToAction("Index", "Home", new { area = "" });
-    }
+
+        public ActionResult Logout()
+            {
+              Request.GetOwinContext().Authentication.SignOut();
+              return RedirectToAction("Index", "Home", new { area = "" });
+            }
 
 
-  }
+        }
 }
