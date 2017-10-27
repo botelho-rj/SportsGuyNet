@@ -6,10 +6,10 @@
 }
 @Html.ValidationSummary()
 @using (Html.BeginForm())
-{				<input type="hidden" name="nomePapel" value="@Model.Papel.Name" />
+{				<input type="hidden" name="nomePapel" value="@Model.Role.Name" />
   <div class="panel	panel-primary">
 
-    <div class="panel-heading">Adicionar	para	@Model.Papel.Name</div>
+    <div class="panel-heading">Adicionar	para	@Model.Role.Name</div>
     <table class="table	table-striped">
       @if (Model.NaoMembros.Count() == 0)
       {
@@ -38,7 +38,7 @@
     </table>
   </div>
   <div class="panel	panel-primary">
-    <div class="panel-heading">Remover	de	@Model.Papel.Name</div>
+    <div class="panel-heading">Remover	de	@Model.Role.Name</div>
     <table class="table	table-striped">
       @if (Model.Membros.Count() == 0)
       {
