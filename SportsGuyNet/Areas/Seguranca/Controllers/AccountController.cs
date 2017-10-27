@@ -65,11 +65,12 @@ namespace SportsGuyNet.Areas.Seguranca.Controllers
             }
         }
 
-
+        [HttpPost]
+        [ValidateAntiForgeryToken]
         public ActionResult Logout()
             {
               Request.GetOwinContext().Authentication.SignOut();
-              return RedirectToAction("Index", "Home", new { area = "" });
+              return RedirectToAction("Index","Home");
             }
 
 

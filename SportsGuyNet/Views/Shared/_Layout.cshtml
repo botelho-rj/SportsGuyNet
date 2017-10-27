@@ -15,14 +15,14 @@
           <span class="icon-bar"></span>
           <span class="icon-bar"></span>
         </button>
-        @Html.ActionLink("SportsGuy", "Index", "Home", new { area = "" }, new { @class = "navbar-brand" })
+        @Html.ActionLink("SportsGuy", "Index", "Home", new { area = "Seguranca" }, new { @class = "navbar-brand" })
       </div>
       @{
           if (Html.GetAuthenticatedUser().ToString() != "")
           {
             <ul class="nav navbar-nav">
-              <li id="liModali" role="presentation">@Html.ActionLink("Modalidades", "Index", "Modalidades")</li>
-              <li id="liEventos" role="presentation">@Html.ActionLink("Eventos", "Index", "Eventos")</li>
+              <li id="liModali" role="presentation">@Html.ActionLink("Modalidades", "Index", "Modalidades", new { area = "Tabelas" }, null)</li>
+              <li id="liEventos" role="presentation">@Html.ActionLink("Eventos", "Index", "Eventos", new { area = "Cadastros" }, null)</li>
               <li id="liPref" role="presentation">@Html.ActionLink("Eventos Preferidos", "Index", "Preferencias")</li>
             </ul>
           }
@@ -30,13 +30,15 @@
       <ul style="text-align:right;">
         @{
             <br/>
+
             if (Html.GetAuthenticatedUser().ToString() != "")
             {
               @Html.GetAuthenticatedUser();
-              @Html.ActionLink("	-	Sair", "Logout", "Account");
+              @Html.ActionLink("	-	Sair", "Logout", "Account", new { area = "Seguranca" }, null);
             }
             else
             {
+              @Html.ActionLink("Registrar", "Create", "Admin", new { area = "Seguranca" }, null);
               @Html.ActionLink("Acessar", "Login", "Account", new { area = "Seguranca" }, null);
             }
         }
