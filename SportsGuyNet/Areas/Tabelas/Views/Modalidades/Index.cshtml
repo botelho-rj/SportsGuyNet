@@ -59,6 +59,9 @@
     <script src="@Url.Content("~/scripts/DataTables/jquery.dataTables.js")"></script>
     <script src="@Url.Content("~/scripts/DataTables/dataTables.bootstrap.js")"></script>
     <script type="text/javascript">
-	$(document).ready(function () { $('.table').dataTable();});
-    </script>
+        $(document).ready(function () {
+            $('li').removeClass("active");
+            $('#liModali').addClass("active");
+            $('.table').dataTable({ "order": [[1, "asc"]] });
+        });				</script> 
 }

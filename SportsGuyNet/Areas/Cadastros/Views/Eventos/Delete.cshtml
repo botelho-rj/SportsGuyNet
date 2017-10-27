@@ -95,4 +95,9 @@
 @section ScriptPage	{
     <script src="@Url.Content("~/scripts/jquery.validate.min.js")"></script>
     <script src="@Url.Content("~/scripts/jquery.validate.unobtrusive.min.js")"></script>
+<script type="text/javascript">
+	$(document).ready(function () {
+	    $('li').removeClass("active");
+	    $('#liEventos').addClass("active");
+	});	</script>
 }
