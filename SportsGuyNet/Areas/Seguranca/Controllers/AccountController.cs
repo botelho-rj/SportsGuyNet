@@ -50,8 +50,7 @@ namespace SportsGuyNet.Areas.Seguranca.Controllers
         {
             get
             {
-                return HttpContext.GetOwinContext().
-                Authentication;
+                return HttpContext.GetOwinContext().Authentication;
             }
         }
 
@@ -65,14 +64,13 @@ namespace SportsGuyNet.Areas.Seguranca.Controllers
             }
         }
 
-        [HttpPost]
-        [ValidateAntiForgeryToken]
         public ActionResult Logout()
-            {
-              Request.GetOwinContext().Authentication.SignOut();
-              return RedirectToAction("Index","Home");
-            }
-
-
+        {
+            AuthManager.SignOut();
+            return RedirectToAction("Index", "Home", new { area = "" });
         }
+
+
+    }
 }
+

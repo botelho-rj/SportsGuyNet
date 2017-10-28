@@ -35,6 +35,7 @@ namespace SportsGuyNet.Areas.Seguranca.Controllers
       return View();
     }
 
+
     [HttpPost]
     public ActionResult Create([Required]string nome)
     {
@@ -70,6 +71,8 @@ namespace SportsGuyNet.Areas.Seguranca.Controllers
       }
     }
 
+
+
     public ActionResult Edit(string id)
     {
       Papel papel = RoleManager.FindById(id);
@@ -84,6 +87,7 @@ namespace SportsGuyNet.Areas.Seguranca.Controllers
         NaoMembros = naoMembros
       });
     }
+
 
     [HttpPost]
     public ActionResult Edit(PapelModificationModel model)
@@ -114,6 +118,7 @@ namespace SportsGuyNet.Areas.Seguranca.Controllers
       return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
     }
 
+    
 
 
   }

@@ -9,6 +9,7 @@ using System.Web.Mvc;
 
 namespace SportsGuyNet.Areas.Seguranca.Controllers
 {
+
     public class AdminController : Controller
     {
         //[Authorize(Roles="Administradores")]
@@ -24,6 +25,24 @@ namespace SportsGuyNet.Areas.Seguranca.Controllers
             {
                 return HttpContext.GetOwinContext().GetUserManager<GerenciadorUsuario>();
             }
+        }
+
+
+        public ActionResult Details(string id)
+        {
+            if (id == null)
+            {
+                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+            }
+
+            Usuario usuario = GerenciadorUsuario.FindById(id);
+
+            if (usuario == null)
+            {
+                return HttpNotFound();
+            }
+
+            return View(usuario);
         }
 
         #region CREATE

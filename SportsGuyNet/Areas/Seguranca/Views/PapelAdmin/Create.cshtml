@@ -1,7 +1,7 @@
 @model	string
 @{
     Layout = "~/Views/Shared/_Layout.cshtml";
-    ViewBag.Title = "Registrando	um	NOVO	PAPEL";
+    ViewBag.Title = "Registrar Permissões";
 }
 <br />
 <br />
@@ -11,7 +11,7 @@
 {				@Html.AntiForgeryToken()
   <div class="panel	panel-primary">
     <div class="panel-heading">
-      Registro	de	um	NOVO	PAPEL
+        Registro de nova Permissão
     </div>
     <div class="panel-body">
       <div class="form-horizontal">
@@ -26,7 +26,7 @@
     <div class="panel-footer	panel-info">
       <div class="col-md-offset-2	col-md-10">
         <input type="submit" value="Adicionar	Papel" class="btn	btn-danger" />
-        @Html.ActionLink("Retornar	para	a	listagem	de PAPÉIS", "Index", null, new { @class = "btn	btn-warning" })
+        @Html.ActionLink("Voltar para lista de Permissões", "Index", null, new { @class = "btn	btn-warning" })
       </div>
       <br />
       <br />

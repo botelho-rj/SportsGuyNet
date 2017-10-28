@@ -24,6 +24,10 @@
               <li id="liModali" role="presentation">@Html.ActionLink("Modalidades", "Index", "Modalidades", new { area = "Tabelas" }, null)</li>
               <li id="liEventos" role="presentation">@Html.ActionLink("Eventos", "Index", "Eventos", new { area = "Cadastros" }, null)</li>
               <li id="liPref" role="presentation">@Html.ActionLink("Eventos Preferidos", "Index", "Preferencias")</li>
+              <li id="liUsuarios" role="presentation">@Html.ActionLink("Usuários", "Index", "Admin", new { area = "Seguranca" }, null)</li>
+              <li id="liPrev" role="presentation">@Html.ActionLink("Privilégios", "Index", "PapelAdmin", new { area = "Seguranca" }, null)</li>
+
+
             </ul>
           }
       }
@@ -34,12 +38,13 @@
             if (Html.GetAuthenticatedUser().ToString() != "")
             {
               @Html.GetAuthenticatedUser();
-              @Html.ActionLink("	-	Sair", "Logout", "Account", new { area = "Seguranca" }, null);
+              @Html.ActionLink("	-	Logout", "Logout", "Account", new { area = "Seguranca" }, null);
             }
             else
             {
-              @Html.ActionLink("Registrar", "Create", "Admin", new { area = "Seguranca" }, null);
-              @Html.ActionLink("Acessar", "Login", "Account", new { area = "Seguranca" }, null);
+              @Html.ActionLink("Increver-se   ", "Create", "Admin", new { area = "Seguranca" }, null);
+                         
+              @Html.ActionLink("    |   Entrar", "Login", "Account", new { area = "Seguranca" }, null);
             }
         }
       </ul>

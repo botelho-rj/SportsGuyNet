@@ -72,7 +72,7 @@ namespace SportsGuyNet.Areas.Cadastros.Controllers
         }
         #endregion
 
-    /*
+    
         #region RESERVE
         //GET: RESERVE
         public ActionResult Reserve(int? id)
@@ -87,7 +87,8 @@ namespace SportsGuyNet.Areas.Cadastros.Controllers
 
             return View(evento);
         }
-
+        #endregion
+        /*
         [HttpPost]
         [ValidateAntiForgeryToken]
         public ActionResult Reserve(Evento evento)
@@ -105,27 +106,27 @@ namespace SportsGuyNet.Areas.Cadastros.Controllers
 
             return View(evento);
         }
-        #endregion
+        
 
       */
 
-/*
-        #region DETAILS
-        //GET: DETAILS
-        public ActionResult Details(int? id)
-        {
-            if (id == null)
-                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+        /*
+                #region DETAILS
+                //GET: DETAILS
+                public ActionResult Details(int? id)
+                {
+                    if (id == null)
+                        return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
 
-            var evento = contexto.Eventos.Where(c => c.EventoId == id).Include(c => c.Modalidade).First();
+                    var evento = contexto.Eventos.Where(c => c.EventoId == id).Include(c => c.Modalidade).First();
 
-            if (evento == null)
-                return HttpNotFound();
+                    if (evento == null)
+                        return HttpNotFound();
 
-            return View(evento);
-        }
-        #endregion
-*/
+                    return View(evento);
+                }
+                #endregion
+        */
 
 
         #region EDIT
