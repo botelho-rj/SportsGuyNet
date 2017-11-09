@@ -1,6 +1,6 @@
 ﻿using System.Web.Mvc;
 
-namespace SportsGuyNet.Areas.Seguranca.Controllers
+namespace SportsGuyNet.Controllers
 {
     public class HomeController : Controller
     {

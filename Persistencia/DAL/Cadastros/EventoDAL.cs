@@ -26,9 +26,12 @@ namespace Persistencia.DAL.Cadastros
 
 
         public void GravarEvento(Evento evento)
-        {         
-            contexto.Eventos.Add(evento);           
-            contexto.Entry(evento).State = EntityState.Modified;
+        {   
+            if(evento.EventoId == 0)
+                contexto.Eventos.Add(evento);
+
+            else
+                contexto.Entry(evento).State = EntityState.Modified;
             contexto.SaveChanges();
         }
 

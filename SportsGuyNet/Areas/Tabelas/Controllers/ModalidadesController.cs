@@ -47,8 +47,7 @@ namespace SportsGuyNet.Areas.Tabelas.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult Create(Modalidade modalidade)
         {
-            GravarModalidade(modalidade);
-            return RedirectToAction("Index");           
+            return GravarModalidade(modalidade);        
         }
         #endregion
 

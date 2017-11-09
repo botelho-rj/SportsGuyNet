@@ -20,9 +20,11 @@ namespace Persistencia.DAL.Tabelas
         }
 
         public void GravarModalidade(Modalidade modalidade)
-        {         
-            contexto.Modalidades.Add(modalidade);           
-            contexto.Entry(modalidade).State = EntityState.Modified;            
+        {
+            if (modalidade.ModalidadeId == 0)
+                contexto.Modalidades.Add(modalidade);
+            else
+                contexto.Entry(modalidade).State = EntityState.Modified;
             contexto.SaveChanges();
         }
 

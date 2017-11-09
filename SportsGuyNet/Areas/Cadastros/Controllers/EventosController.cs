@@ -66,9 +66,8 @@ namespace SportsGuyNet.Areas.Cadastros.Controllers
         [HttpPost]
         [ValidateAntiForgeryToken]
         public ActionResult Create(Evento evento)
-        {
-            GravarEvento(evento);
-            return RedirectToAction("Index");
+        {           
+            return GravarEvento(evento);
         }
         #endregion
 
