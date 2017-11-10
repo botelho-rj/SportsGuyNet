@@ -67,7 +67,7 @@ namespace SportsGuyNet.Areas.Seguranca.Controllers
         public ActionResult Logout()
         {
             AuthManager.SignOut();
-            return RedirectToAction("Index", "Home");
+            return RedirectToAction("Index", "Home", new { area = "" });
         }
 
 

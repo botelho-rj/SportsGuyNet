@@ -11,19 +11,6 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Persistencia", "Persistenci
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Servico", "Servico\Servico.csproj", "{D63058BB-5DCC-48E2-A6AD-3AD03636A450}"
 EndProject
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "NewFolder1", "NewFolder1", "{8D2FEAA2-F700-4703-A411-E3837D17F474}"
-	ProjectSection(SolutionItems) = preProject
-		SportsGuyNet\Controllers\AutenticacoesController.cs = SportsGuyNet\Controllers\AutenticacoesController.cs
-		Modelo\Tabelas\Preferencia.cs = Modelo\Tabelas\Preferencia.cs
-		SportsGuyNet\Controllers\PreferenciasController.cs = SportsGuyNet\Controllers\PreferenciasController.cs
-	EndProjectSection
-EndProject
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "pref", "pref", "{1560AD4B-DF4D-4507-B598-C26CD79E0508}"
-	ProjectSection(SolutionItems) = preProject
-		SportsGuyNet\Views\Preferencias\Delete.cshtml = SportsGuyNet\Views\Preferencias\Delete.cshtml
-		SportsGuyNet\Views\Preferencias\Index.cshtml = SportsGuyNet\Views\Preferencias\Index.cshtml
-	EndProjectSection
-EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -49,9 +36,6 @@ Global
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
-	EndGlobalSection
-	GlobalSection(NestedProjects) = preSolution
-		{1560AD4B-DF4D-4507-B598-C26CD79E0508} = {8D2FEAA2-F700-4703-A411-E3837D17F474}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {56B00C6B-F486-473F-8E39-DCD6338D3F58}

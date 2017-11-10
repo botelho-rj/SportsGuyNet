@@ -500,7 +500,7 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
-    <Compile Include="IdentityConfig.cs" />
+    <Compile Include="App_Start\IdentityConfig.cs" />
     <Compile Include="Infraestrutura\GerenciadorPapel.cs" />
     <Compile Include="Infraestrutura\GerenciadorUsuario.cs" />
     <Compile Include="Infraestrutura\IdentityHelpers.cs" />
