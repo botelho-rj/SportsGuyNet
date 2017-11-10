@@ -1,11 +1,8 @@
 namespace Persistencia.Migrations
 {
-    using System;
-    using System.Data.Entity;
     using System.Data.Entity.Migrations;
-    using System.Linq;
 
-    internal sealed class Configuration : DbMigrationsConfiguration<SportsGuyNet.Persistencia.Context.EFContext>
+    internal sealed class Configuration : DbMigrationsConfiguration<Persistencia.Context.EFContext>
     {
         public Configuration()
         {
@@ -14,7 +11,7 @@ namespace Persistencia.Migrations
             ContextKey = "SportsGuyNet.Persistencia.Context.EFContext";
         }
 
-        protected override void Seed(SportsGuyNet.Persistencia.Context.EFContext context)
+        protected override void Seed(Persistencia.Context.EFContext context)
         {
             //  This method will be called after migrating to the latest version.
 

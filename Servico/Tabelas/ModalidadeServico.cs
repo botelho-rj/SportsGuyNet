@@ -1,5 +1,5 @@
 using Persistencia.DAL.Tabelas;
-using SportsGuyNet.Modelo.Tabelas.Models;
+using Modelo.Tabelas.Models;
 using System.Linq;
 
 namespace Servico.Tabelas

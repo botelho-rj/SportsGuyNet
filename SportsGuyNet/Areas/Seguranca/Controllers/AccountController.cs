@@ -13,12 +13,21 @@ namespace SportsGuyNet.Areas.Seguranca.Controllers
     public class AccountController : Controller
     {
 
+
+        public ActionResult Logout()
+        {
+            AuthManager.SignOut();
+            return RedirectToAction("Index", "Home", new { area = "" });
+        }
+
+
         public ActionResult Login(string returnUrl)
         {
             ViewBag.returnUrl = returnUrl;
             return View();
         }
 
+        #region LOGIN
 
         [HttpPost]
         [ValidateAntiForgeryToken]
@@ -35,16 +44,18 @@ namespace SportsGuyNet.Areas.Seguranca.Controllers
 
                 else
                 {
-                    ClaimsIdentity ident = UserManager.CreateIdentity(user,DefaultAuthenticationTypes.ApplicationCookie);
+                    ClaimsIdentity ident = UserManager.CreateIdentity(user, DefaultAuthenticationTypes.ApplicationCookie);
                     AuthManager.SignOut();
-                    AuthManager.SignIn(new AuthenticationProperties{IsPersistent = false}, ident);
-
+                    AuthManager.SignIn(new AuthenticationProperties { IsPersistent = false }, ident);
+                    Session["UserId"] = ident.GetUserId();                    
                     return RedirectToAction("Index", "../Cadastros/Eventos");
                 }
             }
             return View(details);
         }
+        #endregion
 
+        #region METODOS AUXILIARES
 
         private IAuthenticationManager AuthManager
         {
@@ -64,11 +75,7 @@ namespace SportsGuyNet.Areas.Seguranca.Controllers
             }
         }
 
-        public ActionResult Logout()
-        {
-            AuthManager.SignOut();
-            return RedirectToAction("Index", "Home", new { area = "" });
-        }
+        #endregion
 
 
     }

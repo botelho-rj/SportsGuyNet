@@ -1,6 +1,6 @@
 using Persistencia.DAL.Cadastros;
-using SportsGuyNet.Modelo.Cadastros.Models;
 using System.Linq;
+using Modelo.Cadastros.Models;
 
 namespace Servico.Cadastro
 {
@@ -26,6 +26,11 @@ namespace Servico.Cadastro
         public Evento RemoverEvento(int id)
         {
             return eventoDal.EliminarEventoPorId(id);
+        }
+
+        public void GravarInteresse(Evento evento)
+        {
+            eventoDal.GravarInteresse(evento);
         }
     }
 }

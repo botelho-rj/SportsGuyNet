@@ -1,8 +1,8 @@
-using SportsGuyNet.Modelo.Tabelas.Models;
+using Modelo.Tabelas.Models;
 using System;
 using System.ComponentModel.DataAnnotations;
 
-namespace SportsGuyNet.Modelo.Cadastros.Models
+namespace Modelo.Cadastros.Models
 {
     public class Evento
     {

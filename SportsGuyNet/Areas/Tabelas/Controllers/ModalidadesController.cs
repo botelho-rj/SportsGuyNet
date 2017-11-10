@@ -1,5 +1,5 @@
 using Servico.Tabelas;
-using SportsGuyNet.Modelo.Tabelas.Models;
+using Modelo.Tabelas.Models;
 using System.Net;
 using System.Web.Mvc;
 

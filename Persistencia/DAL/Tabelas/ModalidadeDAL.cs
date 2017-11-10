@@ -1,5 +1,5 @@
-using SportsGuyNet.Modelo.Tabelas.Models;
-using SportsGuyNet.Persistencia.Context;
+using Modelo.Tabelas.Models;
+using Persistencia.Context;
 using System.Data.Entity;
 using System.Linq;
 

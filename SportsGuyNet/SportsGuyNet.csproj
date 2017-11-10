@@ -361,6 +361,9 @@
     <Content Include="Areas\Seguranca\Views\PapelAdmin\Create.cshtml" />
     <Content Include="Areas\Seguranca\Views\PapelAdmin\Edit.cshtml" />
     <Content Include="Areas\Seguranca\Views\Admin\Details.cshtml" />
+    <Content Include="Areas\Tabelas\Views\_ViewStart.cshtml" />
+    <Content Include="Areas\Tabelas\Views\Shared\_Layout.cshtml" />
+    <Content Include="Areas\Tabelas\Views\Preferencias\Index.cshtml" />
     <None Include="Scripts\jquery-1.10.2.intellisense.js" />
     <Content Include="Scripts\jquery-1.10.2.js" />
     <Content Include="Scripts\jquery-1.10.2.min.js" />
@@ -485,6 +488,7 @@
     <Compile Include="Areas\Cadastros\CadastrosAreaRegistration.cs" />
     <Compile Include="Areas\Seguranca\Controllers\AccountController.cs" />
     <Compile Include="Areas\Seguranca\Controllers\AdminController.cs" />
+    <Compile Include="Areas\Tabelas\Controllers\PreferenciasController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Areas\Seguranca\Controllers\PapelAdminController.cs" />
     <Compile Include="Areas\Seguranca\Models\Papel.cs" />
@@ -531,7 +535,6 @@
     <Folder Include="Areas\Cadastros\Models\" />
     <Folder Include="Areas\Cadastros\Views\Shared\" />
     <Folder Include="Areas\Tabelas\Models\" />
-    <Folder Include="Areas\Tabelas\Views\Shared\" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\Modelo\Modelo.csproj">

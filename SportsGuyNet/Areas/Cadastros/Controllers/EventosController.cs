@@ -1,13 +1,12 @@
 using Servico.Cadastro;
 using Servico.Tabelas;
-using SportsGuyNet.Modelo.Cadastros.Models;
-using System;
+using Modelo.Cadastros.Models;
 using System.Net;
 using System.Web.Mvc;
 
 namespace SportsGuyNet.Areas.Cadastros.Controllers
 {
-  public class EventosController : Controller
+    public class EventosController : Controller
     {
 
         private EventoServico eventoServico = new EventoServico();
@@ -41,6 +40,23 @@ namespace SportsGuyNet.Areas.Cadastros.Controllers
             catch
             {
                 PopularViewBag(evento); 
+                return View(evento);
+            }
+        }
+
+        private ActionResult GravarInteresse(Evento evento)
+        {
+            try
+            {
+                if (ModelState.IsValid)
+                {
+                    eventoServico.GravarInteresse(evento);
+                    return RedirectToAction("Index");
+                }
+                return View(evento);
+            }
+            catch
+            {
                 return View(evento);
             }
         }
@@ -86,47 +102,16 @@ namespace SportsGuyNet.Areas.Cadastros.Controllers
 
             return View(evento);
         }
-        #endregion
-        /*
+         
+      
+
         [HttpPost]
         [ValidateAntiForgeryToken]
         public ActionResult Reserve(Evento evento)
-        {
-            if (ModelState.IsValid)
-            {
-                Preferencia preferencia = new Preferencia();
-                preferencia.AutenticacaoId = Convert.ToInt32(Session["UsuarioId"]);
-                preferencia.EventoId = evento.EventoId;
-                contexto.Preferencias.Add(preferencia);
-                contexto.SaveChanges();
-
-                return RedirectToAction("Index");
-            }
-
-            return View(evento);
+        {                        
+            return GravarInteresse(evento);
         }
-        
-
-      */
-
-        /*
-                #region DETAILS
-                //GET: DETAILS
-                public ActionResult Details(int? id)
-                {
-                    if (id == null)
-                        return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
-
-                    var evento = contexto.Eventos.Where(c => c.EventoId == id).Include(c => c.Modalidade).First();
-
-                    if (evento == null)
-                        return HttpNotFound();
-
-                    return View(evento);
-                }
-                #endregion
-        */
-
+        #endregion
 
         #region EDIT
         //GET: EDIT

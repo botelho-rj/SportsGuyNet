@@ -1,7 +1,9 @@
-using SportsGuyNet.Modelo.Cadastros.Models;
-using SportsGuyNet.Persistencia.Context;
+using Modelo.Tabelas;
+using Modelo.Cadastros.Models;
+using Persistencia.Context;
 using System.Data.Entity;
 using System.Linq;
+using System.Web;
 
 namespace Persistencia.DAL.Cadastros
 {
@@ -42,6 +44,22 @@ namespace Persistencia.DAL.Cadastros
             contexto.Eventos.Remove(evento);
             contexto.SaveChanges();
             return evento;
+        }
+
+
+        public void GravarInteresse(Evento evento)
+        {
+            if (evento.EventoId == 0)
+            {
+                Preferencia preferencia = new Preferencia();
+                preferencia.UsuarioId = (string)HttpContext.Current.Session["UserId"];
+                preferencia.EventoId = evento.EventoId;
+                contexto.Preferencias.Add(preferencia);
+            }
+                             
+            else
+                contexto.Entry(evento).State = EntityState.Modified;
+            contexto.SaveChanges();
         }
 
 

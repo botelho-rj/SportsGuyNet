@@ -43,6 +43,7 @@
     <Compile Include="Cadastro\EventoServico.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Tabelas\ModalidadeServico.cs" />
+    <Compile Include="Tabelas\PreferenciaServico.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\Modelo\Modelo.csproj">
