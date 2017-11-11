@@ -11,9 +11,9 @@ namespace SportsGuyNet.Areas.Tabelas.Controllers
         #region INDEX
 
         // GET: Eventos
-        public ActionResult Index(string idUsuario)
-        {            
-            return View(preferenciaServico.ObterPreferenciasClassificadasPorData(idUsuario));
+        public ActionResult Index()
+        {                     
+            return View(preferenciaServico.ObterPreferenciasClassificadasPorData());
         }
         #endregion
     }

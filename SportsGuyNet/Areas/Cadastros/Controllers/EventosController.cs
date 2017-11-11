@@ -45,20 +45,10 @@ namespace SportsGuyNet.Areas.Cadastros.Controllers
         }
 
         private ActionResult GravarInteresse(Evento evento)
-        {
-            try
-            {
-                if (ModelState.IsValid)
-                {
-                    eventoServico.GravarInteresse(evento);
-                    return RedirectToAction("Index");
-                }
-                return View(evento);
-            }
-            catch
-            {
-                return View(evento);
-            }
+        {            
+            eventoServico.GravarInteresse(evento);
+            return RedirectToAction("Index");
+               
         }
 
 

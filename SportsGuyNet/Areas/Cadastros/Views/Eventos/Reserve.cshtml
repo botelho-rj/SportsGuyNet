@@ -8,92 +8,71 @@
 <br />
 <br />
 <br />
+@using (Html.BeginForm())
+{
+    @Html.AntiForgeryToken()
+
 <div class="panel	panel-primary">
     <div class="panel-heading">
         Vizualização de um Evento
     </div>
-    <div class="panel-body">
-        <div class="form-group">
-            @Html.LabelFor(model => model.Modalidade.Nome)
+    <div class="form-horizontal">
+        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+        @Html.HiddenFor(model => model.EventoId)
+        <div class="panel-body">
+            <div class="form-group">
+                @Html.LabelFor(model => model.Modalidade.Nome)
+                <br />
+                <div class="input-group">
+                    <span class="input-group-addon">
+                        <i class="glyphicon	glyphicon-asterisk"></i>
+                    </span>
+                    @Html.EditorFor(model => model.Modalidade.Nome, new { htmlAttributes = new { @class = "form-control", disabled = "disabled" } })
+
+                </div>
+                <div class="form-group">
+                    @Html.LabelFor(model => model.Titulo)
+                    <br />
+                    <div class="input-group">
+                        <span class="input-group-addon">
+                            <i class="glyphicon	glyphicon-text-size"></i>
+                        </span>
+                        @Html.EditorFor(model => model.Titulo, new { htmlAttributes = new { @class = "form-control", disabled = "disabled" } })
+                    </div>
+                </div>
+                <div class="form-group">
+                    @Html.LabelFor(model => model.Data)
+                    <br />
+                    <div class="input-group">
+                        <span class="input-group-addon">
+                            <i class="glyphicon	glyphicon-calendar"></i>
+                        </span>
+                        @Html.EditorFor(model => model.Data, new { htmlAttributes = new { @class = "form-control", disabled = "disabled" } })
+                    </div>
+                </div>
+                <div class="form-group">
+                    @Html.LabelFor(model => model.Horario)
+                    <br />
+                    <div class="input-group">
+                        <span class="input-group-addon">
+                            <i class="glyphicon	glyphicon-time"></i>
+                        </span>
+                        @Html.EditorFor(model => model.Horario, new { htmlAttributes = new { @class = "form-control", disabled = "disabled" } })
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+        <div class="panel-footer panel-info">
+            <div class="col-md-offset-2 col-md-10">
+                <input type="submit" value="Me Interessa" class="btn btn-default" />
+                @Html.ActionLink("Voltar à Lista", "Index", null, new { @class = "btn btn-warning" })
+            </div>
             <br />
-            <div class="input-group">
-                <span class="input-group-addon">
-                    <i class="glyphicon	glyphicon-asterisk"></i>
-                </span>
-                @Html.EditorFor(model => model.Modalidade.Nome, new { htmlAttributes = new { @class = "form-control", disabled = "disabled" } })
-
-            </div>
-            <div class="form-group">
-                @Html.LabelFor(model => model.Titulo)
-                <br />
-                <div class="input-group">
-                    <span class="input-group-addon">
-                        <i class="glyphicon	glyphicon-text-size"></i>
-                    </span>
-                    @Html.EditorFor(model => model.Titulo, new { htmlAttributes = new { @class = "form-control", disabled = "disabled" } })
-                </div>
-            </div>
-            <div class="form-group">
-                @Html.LabelFor(model => model.Data)
-                <br />
-                <div class="input-group">
-                    <span class="input-group-addon">
-                        <i class="glyphicon	glyphicon-calendar"></i>
-                    </span>
-                    @Html.EditorFor(model => model.Data, new { htmlAttributes = new { @class = "form-control", disabled = "disabled" } })
-                </div>
-            </div>
-            <div class="form-group">
-                @Html.LabelFor(model => model.Horario)
-                <br />
-                <div class="input-group">
-                    <span class="input-group-addon">
-                        <i class="glyphicon	glyphicon-time"></i>
-                    </span>
-                    @Html.EditorFor(model => model.Horario, new { htmlAttributes = new { @class = "form-control", disabled = "disabled" } })
-                </div>
-            </div>
+            <br />
         </div>
     </div>
-    <div class="panel-footer	panel-info">
-        <a href="#" class="btn	btn-info" data-toggle="modal" data-target="#deleteConfirmationModal">
-            Interesse
-        </a>
-        @Html.ActionLink("Retornar para a listagem", "Index", null, new { @class = "btn	btn-info" })
-    </div>
-    <br />
-    <br />
-</div>
-}   <div class="modal	fade" id="deleteConfirmationModal" tabindex="-1" role="dialog" aria-hidden="true">
-    <div class="modal-dialog">
-        <div class="modal-content">
-            <div class="modal-header">
-                <button type="button" class="close" data-ELTEismiss="modal" aria-hidden="true">
-                    &times;
-                </button>
-                <h4 class="modal-title">Confirmação	de Interesse no Evento</h4>
-            </div>
-            <div class="modal-body">
-                <p>	Confirmar interesse pelo Evento @Model.Titulo.ToUpper().</p>
-                <p><strong>Deseja	prosseguir?</strong></p>
-                @using (Html.BeginForm("Reserve", "Eventos", FormMethod.Post, new { @id = "delete-form", role = "form" }))
-                {
-                    @Html.HiddenFor(m => m.EventoId)
-                    @Html.AntiForgeryToken()
-                }
-            </div>
-            <div class="modal-footer">
-                <button type="button" class="btn	btn-default" onclick="$('#delete-form').submit();">
-                    Sim
-                </button>
-                <button type="button" class="btn	btn-primary" data-dismiss="modal">
-                    Não
-                </button>
-            </div>
-        </div>
-    </div>
-</div>
-
+}  
 @section ScriptPage	{
     <script src="@Url.Content("~/scripts/jquery.validate.min.js")"></script>
     <script src="@Url.Content("~/scripts/jquery.validate.unobtrusive.min.js")"></script>

@@ -49,16 +49,10 @@ namespace Persistencia.DAL.Cadastros
 
         public void GravarInteresse(Evento evento)
         {
-            if (evento.EventoId == 0)
-            {
-                Preferencia preferencia = new Preferencia();
-                preferencia.UsuarioId = (string)HttpContext.Current.Session["UserId"];
-                preferencia.EventoId = evento.EventoId;
-                contexto.Preferencias.Add(preferencia);
-            }
-                             
-            else
-                contexto.Entry(evento).State = EntityState.Modified;
+            Preferencia preferencia = new Preferencia();
+            preferencia.UsuarioId = (string)HttpContext.Current.Session["UserId"];
+            preferencia.EventoId = evento.EventoId;
+            contexto.Preferencias.Add(preferencia);
             contexto.SaveChanges();
         }
 

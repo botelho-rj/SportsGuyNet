@@ -23,16 +23,16 @@
             <thead>
                 <tr>
                     <th>
-                        @Html.DisplayNameFor(model => model.Evento.Modalidade.Nome)
+                        @Html.DisplayNameFor(model => model.PreferenciaId)
                     </th>
                     <th>
-                        @Html.DisplayNameFor(model => model.Evento.Titulo)
+                        @Html.DisplayNameFor(model => model.EventoId)
                     </th>
                     <th>
-                        @Html.DisplayNameFor(model => model.Evento.Data)
+                        @Html.DisplayNameFor(model => model.UsuarioId)
                     </th>
                     <th>
-                        @Html.DisplayNameFor(model => model.Evento.Horario)
+
                     </th>
                 </tr>
             </thead>
@@ -41,20 +41,17 @@
                 {
                     <tr>
                         <td>
-                            @Html.DisplayFor(modelItem => item.Evento.Modalidade.Nome)
+                            @Html.DisplayFor(modelItem => item.PreferenciaId)
                         </td>
                         <td>
-                            @Html.DisplayFor(modelItem => item.Evento.Titulo)
+                            @Html.DisplayFor(modelItem => item.EventoId)
                         </td>
                         <td>
-                            @Html.DisplayFor(modelItem => item.Evento.Data)
-                        </td>
-                        <td>
-                            @Html.DisplayFor(modelItem => item.Evento.Horario)
+                            @Html.DisplayFor(modelItem => item.UsuarioId)
                         </td>
                         <td>
                             @Html.ActionLink("Detalhes", "Edit", new { id = item.EventoId }) |
-                            @Html.ActionLink("Remover Interesse", "Delete", new { id = item.EventoId })
+                            @Html.ActionLink("Remover Interesse", "Delete", new { id = item.PreferenciaId })
                         </td>
                     </tr>
                 }
@@ -64,7 +61,7 @@
 </div>
 
 @section styles{
-    <link href="@Url.Content("~/content/DataTables/css/dataTables.bootstra.css")"
+    <link href="@Url.Content("~/content/DataTables/css/dataTables.bootstrap.css")"
           rel="stylesheet" />
 }
 

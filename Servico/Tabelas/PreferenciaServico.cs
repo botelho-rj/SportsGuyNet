@@ -8,9 +8,9 @@ namespace Servico.Tabelas
     {
         private PreferenciaDAL preferenciaDAL = new PreferenciaDAL();
 
-        public IQueryable ObterPreferenciasClassificadasPorData(string idUsuario)
+        public IQueryable ObterPreferenciasClassificadasPorData()
         {
-            return preferenciaDAL.ObterPreferenciasClassificadasPorData(idUsuario);
+            return preferenciaDAL.ObterPreferenciasClassificadasPorData();
         }
 
     }

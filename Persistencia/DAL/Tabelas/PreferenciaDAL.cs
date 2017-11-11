@@ -8,9 +8,9 @@ namespace Persistencia.DAL.Tabelas
     {
         EFContext contexto = new EFContext();
 
-        public IQueryable ObterPreferenciasClassificadasPorData(string idUsuario)
-        {          
-            return contexto.Preferencias.Where(c => c.UsuarioId == idUsuario);
+        public IQueryable ObterPreferenciasClassificadasPorData()
+        {   
+            return contexto.Preferencias.OrderBy(c => c.PreferenciaId);
         }
 
        
