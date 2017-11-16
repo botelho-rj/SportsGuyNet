@@ -11,7 +11,8 @@ namespace Persistencia.DAL.Tabelas
 
         public IQueryable ObterPreferenciasClassificadasPorData()
         {   
-            return contexto.Preferencias.OrderBy(c => c.PreferenciaId);
+            var preferencias = contexto.Preferencias.Include("Evento").OrderBy(c => c.PreferenciaId);
+            return preferencias;
         }
 
         public Preferencia ObterPreferencia(int id)

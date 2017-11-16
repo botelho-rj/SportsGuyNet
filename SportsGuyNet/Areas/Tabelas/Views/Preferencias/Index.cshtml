@@ -23,13 +23,16 @@
             <thead>
                 <tr>
                     <th>
-                        @Html.DisplayNameFor(model => model.PreferenciaId)
+                        @Html.DisplayNameFor(model => model.Evento.Modalidade.Nome)
                     </th>
                     <th>
-                        @Html.DisplayNameFor(model => model.EventoId)
+                        @Html.DisplayNameFor(model => model.Evento.Titulo)
+                    </th>                   
+                    <th>
+                        @Html.DisplayNameFor(model => model.Evento.Data)
                     </th>
                     <th>
-                        @Html.DisplayNameFor(model => model.UsuarioId)
+                        @Html.DisplayNameFor(model => model.Evento.Horario)
                     </th>
                     <th>
 
@@ -41,16 +44,18 @@
                 {
                     <tr>
                         <td>
-                            @Html.DisplayFor(modelItem => item.PreferenciaId)
+                            @Html.DisplayFor(modelItem => item.Evento.ModalidadeId)
                         </td>
                         <td>
-                            @Html.DisplayFor(modelItem => item.EventoId)
+                            @Html.DisplayFor(modelItem => item.Evento.Titulo)
                         </td>
                         <td>
-                            @Html.DisplayFor(modelItem => item.UsuarioId)
+                            @Html.DisplayFor(modelItem => item.Evento.Data)
                         </td>
                         <td>
-                            @Html.ActionLink("Detalhes", "Edit", new { id = item.EventoId }) |
+                            @Html.DisplayFor(modelItem => item.Evento.Horario)
+                        </td>
+                        <td>
                             @Html.ActionLink("Remover Interesse", "Delete", new { id = item.PreferenciaId })
                         </td>
                     </tr>
