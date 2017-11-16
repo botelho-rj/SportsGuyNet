@@ -15,7 +15,8 @@ namespace SportsGuyNet.Areas.Seguranca.Controllers
   public class PapelAdminController : Controller
   {
 
-    //	GET:	Seguranca/RoleAdmin
+    //	GET:Seguranca/RoleAdmin
+    [Authorize(Roles="Admin")]
     public ActionResult Index()
     {
       return View(RoleManager.Roles);

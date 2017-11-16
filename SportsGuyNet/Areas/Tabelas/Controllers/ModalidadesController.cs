@@ -37,6 +37,7 @@ namespace SportsGuyNet.Areas.Tabelas.Controllers
 
         #region CREATE
         // GET: Modalidades/Create
+        [Authorize(Roles = "Admin")]
         public ActionResult Create()
         {
             return View();
@@ -53,6 +54,7 @@ namespace SportsGuyNet.Areas.Tabelas.Controllers
 
         #region EDIT
         // GET: Modalidades/Edit/5
+        [Authorize(Roles = "Admin")]
         public ActionResult Edit(int? id)
         {
             if (id == null)
@@ -76,6 +78,7 @@ namespace SportsGuyNet.Areas.Tabelas.Controllers
 
         #region DELETE
         // GET: Modalidades/Delete/5
+        [Authorize(Roles = "Admin")]
         public ActionResult Delete(int? id)
         {
             if (id == null)

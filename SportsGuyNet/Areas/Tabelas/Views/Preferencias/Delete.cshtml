@@ -1,4 +1,4 @@
-﻿@model Modelo.Tabelas.Models.Preferencia
+﻿@model Modelo.Tabelas.Preferencia
 
 @{
     Layout = "~/Views/Shared/_Layout.cshtml";
@@ -43,7 +43,7 @@
                     @Html.EditorFor(model => model.UsuarioId, new { htmlAttributes = new { @class = "form-control" } })
                     @Html.ValidationMessageFor(model => model.UsuarioId, "", new { @class = "text-danger" })
                 </div>
-            </div>           
+            </div>
         </div>
         <div class="panel-footer	panel-info">
             <a href="#" class="btn	btn-info" data-toggle="modal" data-target="#deleteConfirmationModal">
@@ -64,7 +64,7 @@
                 <h4 class="modal-title">Confirmação	de	exclusão de Evento</h4>
             </div>
             <div class="modal-body">
-                <p>	Você	está	prestes	a	remover	o Evento @Model.PreferenciaId</p>
+                <p>	Você	está	prestes	a	remover	a Preferencia @Model.PreferenciaId</p>
                 <p><strong>Deseja	prosseguir?</strong></p>
                 @using (Html.BeginForm("Delete", "Preferencias", FormMethod.Post, new { @id = "delete-form", role = "form" }))
                 {

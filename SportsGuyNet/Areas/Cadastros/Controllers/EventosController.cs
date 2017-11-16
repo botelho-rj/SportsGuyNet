@@ -63,6 +63,7 @@ namespace SportsGuyNet.Areas.Cadastros.Controllers
 
         #region CREATE
         //GET: CREATE
+        [Authorize(Roles = "Admin")]
         public ActionResult Create()
         {
             PopularViewBag();      
@@ -105,6 +106,7 @@ namespace SportsGuyNet.Areas.Cadastros.Controllers
 
         #region EDIT
         //GET: EDIT
+        [Authorize(Roles = "Admin")]
         public ActionResult Edit(int? id)
         {
             if (id == null)
@@ -136,6 +138,7 @@ namespace SportsGuyNet.Areas.Cadastros.Controllers
 
         #region DELETE
         //GET: DELETE
+        [Authorize(Roles = "Admin")]
         public ActionResult Delete(int? id)
         {
             if (id == null)

@@ -12,7 +12,7 @@ namespace SportsGuyNet.Areas.Seguranca.Controllers
 
     public class AdminController : Controller
     {
-        //[Authorize(Roles="Administradores")]
+        [Authorize(Roles="Admin")]
         public ActionResult Index()
         {
             return View(GerenciadorUsuario.Users);
@@ -63,7 +63,7 @@ namespace SportsGuyNet.Areas.Seguranca.Controllers
 
                 if (result.Succeeded)
                 {
-                    return RedirectToAction("Index");
+                    return RedirectToAction("Index", "../Cadastros/Eventos");
                 }
                 else
                 {

@@ -20,7 +20,7 @@ namespace SportsGuyNet.Areas.Tabelas.Controllers
         #endregion
 
 
-        private ActionResult RemoverPreferencia(int? id)
+        public ActionResult Delete(int? id)
         {
             if (id == null)
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
@@ -35,12 +35,12 @@ namespace SportsGuyNet.Areas.Tabelas.Controllers
 
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult RemoverPreferencia(int id)
+        public ActionResult Delete(int id)
         {
             try
             {
                 var preferencia = preferenciaServico.RemoverPreferencia(id);
-                TempData["Message"] = "A Preferencia " + preferencia.Evento.Titulo.ToUpper() + " foi removida.";
+                TempData["Message"] = "A Preferencia " + preferencia.PreferenciaId + " foi removida.";
                 return RedirectToAction("Index");
             }
             catch
